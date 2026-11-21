@@ -45,7 +45,7 @@ while True:
     print("  status:", status.get("status"))
     if status.get("status") in ("Succeeded", "Failed", "Canceled"):
         break
-    time.sleep(3)
+    time.sleep(10)
 
 if status["status"] != "Succeeded":
     sys.exit(json.dumps(status, indent=2))
