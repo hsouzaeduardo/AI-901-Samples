@@ -1,0 +1,18 @@
+# Exemplos OFFLINE (rodam sem Azure): apenas numpy
+numpy>=1.26
+
+# Exemplos com Azure / Microsoft Foundry
+python-dotenv>=1.0
+requests>=2.31
+openai>=1.108
+azure-identity>=1.19
+azure-ai-projects>=2.1.0
+azure-ai-textanalytics>=5.3
+azure-cognitiveservices-speech>=1.45
+azure-ai-voicelive[aiohttp]>=1.0
+# Content Understanding ainda é distribuído como pré-lançamento:
+#   pip install --pre azure-ai-contentunderstanding
+azure-ai-contentunderstanding>=1.0.0b1
+
+# Somente para o exemplo de Voice Live com microfone/alto-falante (04-fala/05_voice_live.py)
+# pyaudio

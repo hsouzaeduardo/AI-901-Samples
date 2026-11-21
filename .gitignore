@@ -1,0 +1,17 @@
+# Segredos
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Saídas geradas pelos exemplos
+saidas/
+logs/
+*.wav
+*.mp4
+*.png
+!docs/*.png
+despesas.csv
