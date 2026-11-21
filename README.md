@@ -9,6 +9,7 @@ Há dois tipos de exemplo:
 |---|---|---|
 | **Offline** | Não. Só Python + `numpy` | Mostrar *como a técnica funciona por dentro*: tokens, atenção, TF-IDF, CNN, difusão, OCR… Bom para a parte conceitual (cerca de 40% do exame). |
 | **Azure / Foundry** | Sim (recurso + projeto do Microsoft Foundry) | Usar os serviços de verdade, com o mesmo SDK e os mesmos padrões dos labs oficiais (cerca de 60% do exame). |
+| **Local** (módulo 05) | Não. OpenCV, Ultralytics YOLO e MediaPipe | Modelos de visão prontos rodando na própria máquina, para comparar com os modelos da nuvem. |
 
 ---
 
@@ -65,6 +66,13 @@ Agrupado pelos 3 blocos de conteúdo do `Curso_AI-901_Final.pptx`.
 | **M5** Modelos multimodais para análise de imagem | [05_analise_imagem.py](05-visao-computacional/05_analise_imagem.py) | Azure |
 | **M5** Geração de imagem | [06_gerar_imagem.py](05-visao-computacional/06_gerar_imagem.py) | Azure |
 | **M5** Geração de vídeo (trabalho assíncrono) | [07_gerar_video.py](05-visao-computacional/07_gerar_video.py) | Azure |
+| **M5** Tarefas + filtros da CNN com **OpenCV** | [08_opencv_tarefas.py](05-visao-computacional/08_opencv_tarefas.py) | Local |
+| **M5** Detecção de rostos: Haar x YuNet (CNN) + anonimização | [09_opencv_rostos.py](05-visao-computacional/09_opencv_rostos.py) | Local |
+| **M5** Tarefas com **Ultralytics YOLO** (classificação, detecção, segmentação, pose) | [10_yolo_tarefas.py](05-visao-computacional/10_yolo_tarefas.py) | Local |
+| **M5** YOLO em vídeo: rastreamento e contagem | [11_yolo_rastreamento.py](05-visao-computacional/11_yolo_rastreamento.py) | Local |
+| **M5** Treinar o YOLO com imagens rotuladas (mAP, ONNX) | [12_yolo_treinar.py](05-visao-computacional/12_yolo_treinar.py) | Local |
+| **M5** Tarefas com **MediaPipe** (classificação, detecção, segmentação, pose, mãos) | [13_mediapipe_tarefas.py](05-visao-computacional/13_mediapipe_tarefas.py) | Local |
+| **M5** MediaPipe ao vivo: gestos e contagem de dedos | [14_mediapipe_maos_webcam.py](05-visao-computacional/14_mediapipe_maos_webcam.py) | Local |
 | **M6** OCR | [01_ocr_simulado.py](06-extracao-de-informacoes/01_ocr_simulado.py): mini OCR com as 5 etapas | Offline |
 | **M6** Extração de campo e mapeamento | [02_mapeamento_campos.py](06-extracao-de-informacoes/02_mapeamento_campos.py): cupom fiscal → JSON/CSV | Offline |
 | **M6** O que é extração + IA generativa no mapeamento | [03_extracao_com_llm.py](06-extracao-de-informacoes/03_extracao_com_llm.py) | Azure |
@@ -86,7 +94,15 @@ pip install numpy
 python 03-analise-de-texto/01_preprocessamento.py
 ```
 
-### 2. Exemplos com Azure / Microsoft Foundry
+### 2. Exemplos de visão local (módulo 05: OpenCV, YOLO, MediaPipe)
+
+```bash
+pip install -r 05-visao-computacional/requirements-visao.txt   # inclui PyTorch (CPU): ~900 MB instalados
+python 05-visao-computacional/10_yolo_tarefas.py
+```
+Os modelos (alguns MB cada) são baixados na primeira execução para `05-visao-computacional/modelos/`.
+
+### 3. Exemplos com Azure / Microsoft Foundry
 
 1. Crie um **projeto do Foundry** em <https://ai.azure.com> (ou use [04_hierarquia_azure.sh](01-conceitos-e-azure/04_hierarquia_azure.sh)).
 2. Implante os modelos que for usar: um modelo de chat com visão (ex.: `gpt-4.1-mini`). Opcionais: `text-embedding-3-small`, `gpt-image-1`, `sora-2`.
@@ -120,6 +136,7 @@ python 03-analise-de-texto/01_preprocessamento.py
 
 **O que foi verificado e como:**
 - Os **18 exemplos offline** foram executados e as saídas citadas nos READMEs são reais.
+- Os **7 exemplos de visão local** (08 a 14 do módulo 05) foram executados com fotos de exemplo, inclusive o treino do YOLO e a exportação ONNX. Testados com OpenCV 4.11 e 5.1, Ultralytics 8.4.216 (YOLO26) e MediaPipe 1.2.3, num único ambiente. Os modos `--webcam` **não** foram testados, pois não havia câmera disponível.
 - Os **exemplos Python com Azure** não foram executados contra uma assinatura real. Foram verificados a sintaxe, os imports e os nomes de classes, métodos e atributos nos SDKs instalados.
 - O script **`04_hierarquia_azure.sh`** só teve a sintaxe verificada (`bash -n`). Os comandos e parâmetros foram conferidos na documentação da CLI no Microsoft Learn (requer CLI 2.80+).
 

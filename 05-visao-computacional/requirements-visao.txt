@@ -1,0 +1,9 @@
+# Exemplos 08 a 14 do módulo 05 (visão local: OpenCV, Ultralytics YOLO e MediaPipe)
+# Testado com: opencv-python 4.11 e 5.1, ultralytics 8.4.216 (torch 2.15 CPU), mediapipe 1.2.3
+#   pip install -r 05-visao-computacional/requirements-visao.txt
+opencv-python>=4.8          # 08 e 09 (Haar Cascade só existe no OpenCV 4.x; YuNet funciona no 4.8+ e 5.x)
+ultralytics>=8.4            # 10, 11 e 12 (modelos YOLO26; com versões antigas use --modelo yolo11n)
+lap>=0.5                    # 11 - rastreamento (ByteTrack); evita instalação automática no meio da aula
+mediapipe>=1.2              # 13 e 14 (API Tasks; a antiga mp.solutions não existe mais)
+# Opcional - exportar o modelo treinado para ONNX (12_yolo_treinar.py --exportar):
+# onnx onnxruntime onnxslim

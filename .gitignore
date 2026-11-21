@@ -15,3 +15,12 @@ logs/
 *.png
 !docs/*.png
 despesas.csv
+
+# Modelos baixados e artefatos de treino (módulo 05: OpenCV, YOLO, MediaPipe)
+modelos/
+runs/
+datasets/
+*.pt
+*.onnx
+*.tflite
+*.task
